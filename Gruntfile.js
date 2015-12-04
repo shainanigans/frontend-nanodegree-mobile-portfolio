@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             options: {
             },
             files: {
-                'index-build.html': 'index.html'
+                'index.html': 'index-build.html'
             }
         }
     },
