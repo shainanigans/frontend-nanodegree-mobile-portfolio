@@ -8,6 +8,15 @@ module.exports = function(grunt) {
           }
         }
       },
+      inlinecss: {
+        main: {
+            options: {
+            },
+            files: {
+                'index-build.html': 'index.html'
+            }
+        }
+    },
       responsive_images: {
       dev: {
         options: {
@@ -55,6 +64,7 @@ module.exports = function(grunt) {
     });
     /* CSS Tasks */
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-inline-css');
     /* Image Tasks */
     grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-contrib-clean');

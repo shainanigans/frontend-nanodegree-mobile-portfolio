@@ -12,6 +12,7 @@
     "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "~0.4.4",
+    "grunt-inline-css": "^0.1.5",
     "grunt-mkdir": "^0.1.2",
     "grunt-respimg": "^1.1.0",
     "grunt-responsive-images": "^0.1.7"
