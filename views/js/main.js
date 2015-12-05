@@ -444,6 +444,7 @@ var resizePizzas = function(size) {
 
     // Make result of sizeSwitcher() a percentage
     var newsize = sizeSwitcher(size) * 100;
+    console.log(newsize);
     var randomPizza = document.querySelectorAll('.randomPizzaContainer');
 
     // Apply new size to .randomPizzaContainer
@@ -497,11 +498,16 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  console.log(items);
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  // Get cached variables for for loop, based on items
+  //TODO: Can I put 'items' somewhere else so it's not redefined all the time?
+  var items = document.getElementsByClassName('mover'); //used for updatePositions
+  var itemsLength = items.length;
+  var fromTop = document.body.scrollTop;
+
+  for (var i = 0; i < itemsLength; i++) {
+    // Create 5 different speeds
+    var phase = Math.sin((fromTop / 1250) + (i % 5));
+    items[i].style.transform = 'translateX(' + 100 * phase + 'px)';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
