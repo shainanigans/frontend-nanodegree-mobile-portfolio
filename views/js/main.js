@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -420,11 +420,6 @@ var resizePizzas = function(size) {
   }
 
   changeSliderLabel(size);
-
-  // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  //var oldwidth = elem.offsetWidth;
-  //var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
-  //var oldsize = oldwidth / windowwidth;
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
@@ -445,7 +440,7 @@ var resizePizzas = function(size) {
     // Make result of sizeSwitcher() a percentage
     var newsize = sizeSwitcher(size) * 100;
     console.log(newsize);
-    var randomPizza = document.querySelectorAll('.randomPizzaContainer');
+    var randomPizza = document.getElementsByClassName('randomPizzaContainer');
 
     // Apply new size to .randomPizzaContainer
     for (var i = 0; i < randomPizza.length; i++) {
@@ -493,20 +488,28 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+//TODO: Don't pollute the global namespace
+// Outside of updatePositions so it doesn't get redefined all the time
+var items = document.getElementsByClassName('mover'); //used for updatePositions
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // Get cached variables for for loop, based on items
-  //TODO: Can I put 'items' somewhere else so it's not redefined all the time?
-  var items = document.getElementsByClassName('mover'); //used for updatePositions
+  // Get cached variables for the for loop
   var itemsLength = items.length;
   var fromTop = document.body.scrollTop;
+  var constants = [];
 
+  // Create reusable values for phase
+  for (i = 0; i < 5; i++) {
+    constants.push(Math.sin((fromTop / 1250) + i));
+  }
+
+  // Move the pizzas using translateX
   for (var i = 0; i < itemsLength; i++) {
-    // Create 5 different speeds
-    var phase = Math.sin((fromTop / 1250) + (i % 5));
+    var phase = constants[i % 5];
     items[i].style.transform = 'translateX(' + 100 * phase + 'px)';
   }
 
@@ -527,15 +530,15 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 100; i++) { //reduced from 200 to 100
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    elem.style.left = (i % cols) * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById('movingPizzas1').appendChild(elem);
   }
   updatePositions();
 });
