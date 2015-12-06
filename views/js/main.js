@@ -498,15 +498,21 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // Get cached variables for for loop, based on items
   //TODO: Can I put 'items' somewhere else so it's not redefined all the time?
   var items = document.getElementsByClassName('mover'); //used for updatePositions
   var itemsLength = items.length;
+
+  // Get cached variables for for loop, based on items
   var fromTop = document.body.scrollTop;
+  var constants = [];
+
+  // Create reusable values for phase
+  for (i = 0; i < 5; i++) {
+    constants.push(Math.sin((fromTop / 1250) + i));
+  }
 
   for (var i = 0; i < itemsLength; i++) {
-    // Create 5 different speeds
-    var phase = Math.sin((fromTop / 1250) + (i % 5));
+    var phase = constants[i % 5];
     items[i].style.transform = 'translateX(' + 100 * phase + 'px)';
   }
 
@@ -533,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    elem.style.left = (i % cols) * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
