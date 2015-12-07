@@ -33,3 +33,6 @@ View the project [online](http://shainanigans.github.io/frontend-nanodegree-mobi
 * Optimised background pizza creation function
   * Reduced number of background pizzas from 200 to 100
   * Set `left` property for pizzas since `updatePositions()` no longer set it
+
+##About
+This project is part of Udacity's Front-End Web Developer Nanodegree.
