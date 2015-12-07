@@ -4,7 +4,7 @@ module.exports = function(grunt) {
       autoprefixer:{
         dist:{
           files:{
-            'css/style.css':'style/style.css'
+            'css/style.css':'/css/style.css'
           }
         }
       },
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     /* Clear out the images directory if it exists */
     clean: {
       dev: {
-        src: ['views/images/pizzeria'],
+        src: ['views/images'],
       },
     },
 
@@ -57,9 +57,15 @@ module.exports = function(grunt) {
     mkdir: {
       dev: {
         options: {
-          create: ['views/images/pizzeria']
+          create: ['views/images']
         },
       },
+    },
+    uglify: {
+        build: {
+            src: 'js/perfmatters.js',
+            dest: 'js/perfmatters.min.js'
+        }
     }
     });
     /* CSS Tasks */
@@ -69,6 +75,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mkdir');
+    /* JS Tasks */
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     /* Default Task */
     grunt.registerTask('default', ['autoprefixer', 'clean', 'mkdir', 'responsive_images']);
 }
