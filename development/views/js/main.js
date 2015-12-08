@@ -439,7 +439,6 @@ var resizePizzas = function(size) {
 
     // Make result of sizeSwitcher() a percentage
     var newsize = sizeSwitcher(size) * 100;
-    console.log(newsize);
     var randomPizza = document.getElementsByClassName('randomPizzaContainer');
 
     // Apply new size to .randomPizzaContainer
