@@ -440,9 +440,10 @@ var resizePizzas = function(size) {
     // Make result of sizeSwitcher() a percentage
     var newsize = sizeSwitcher(size) * 100;
     var randomPizza = document.getElementsByClassName('randomPizzaContainer');
+    var randomPizzaLength = randomPizza.length;
 
     // Apply new size to .randomPizzaContainer
-    for (var i = 0; i < randomPizza.length; i++) {
+    for (var i = 0; i < randomPizzaLength; i++) {
       randomPizza[i].style.width = newsize + '%';
     }
   }
