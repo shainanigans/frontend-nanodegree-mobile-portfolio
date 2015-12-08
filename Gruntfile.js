@@ -4,7 +4,7 @@ module.exports = function(grunt) {
       autoprefixer:{
         dist:{
           files:{
-            'development/css/style.css':'production/css/style.css'
+            'development/css/style.css':'development/css/style.css'
           }
         }
       },
@@ -64,8 +64,7 @@ module.exports = function(grunt) {
     uglify: {
         build: {
             src: 'development/js/perfmatters.js',
-            dest: ['development/js/perfmatters.min.js',
-                   'production/js/perfmatters.min.js']
+            dest: ['production/js/perfmatters.min.js', 'development/js/perfmatters.min.js']
         }
     }
     });
