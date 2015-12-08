@@ -439,11 +439,11 @@ var resizePizzas = function(size) {
 
     // Make result of sizeSwitcher() a percentage
     var newsize = sizeSwitcher(size) * 100;
-    console.log(newsize);
     var randomPizza = document.getElementsByClassName('randomPizzaContainer');
+    var randomPizzaLength = randomPizza.length;
 
     // Apply new size to .randomPizzaContainer
-    for (var i = 0; i < randomPizza.length; i++) {
+    for (var i = 0; i < randomPizzaLength; i++) {
       randomPizza[i].style.width = newsize + '%';
     }
   }
@@ -460,10 +460,14 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
+var docfrag = document.createDocumentFragment();
+
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
-  pizzasDiv.appendChild(pizzaElementGenerator(i));
+  docfrag.appendChild(pizzaElementGenerator(i));
 }
+
+pizzasDiv.appendChild(docfrag);
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
 window.performance.mark("mark_end_generating");
@@ -530,8 +534,13 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 100; i++) { //reduced from 200 to 100
-    var elem = document.createElement('img');
+  var windowHeight = window.screen.height;
+  console.log(windowHeight);
+  var quantity = windowHeight / 100 * cols;
+  console.log(quantity);
+  var elem;
+  for (var i = 0; i < quantity; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
