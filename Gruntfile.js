@@ -4,7 +4,7 @@ module.exports = function(grunt) {
       autoprefixer:{
         dist:{
           files:{
-            'css/style.css':'/css/style.css'
+            'development/css/style.css':'production/css/style.css'
           }
         }
       },
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             options: {
             },
             files: {
-                'index.html': 'index-build.html'
+                'production/index.html': 'development/index.html'
             }
         }
     },
@@ -40,8 +40,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           src: ['*.{gif,jpg,png}'],
-          cwd: 'views/images',
-          dest: 'views/images'
+          cwd: 'development/views/images',
+          dest: 'production/views/images'
         }]
       }
     },
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     /* Clear out the images directory if it exists */
     clean: {
       dev: {
-        src: ['views/images'],
+        src: ['production/views/images'],
       },
     },
 
@@ -57,14 +57,15 @@ module.exports = function(grunt) {
     mkdir: {
       dev: {
         options: {
-          create: ['views/images']
+          create: ['production/views/images']
         },
       },
     },
     uglify: {
         build: {
-            src: 'js/perfmatters.js',
-            dest: 'js/perfmatters.min.js'
+            src: 'development/js/perfmatters.js',
+            dest: ['development/js/perfmatters.min.js',
+                   'production/js/perfmatters.min.js']
         }
     }
     });
