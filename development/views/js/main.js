@@ -534,7 +534,11 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 100; i++) { //reduced from 200 to 100
+  var windowHeight = window.screen.height;
+  console.log(windowHeight);
+  var quantity = windowHeight / 100 * cols;
+  console.log(quantity);
+  for (var i = 0; i < quantity; i++) { //reduced from 200 to 100
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
