@@ -62,9 +62,17 @@ module.exports = function(grunt) {
       },
     },
     uglify: {
-        build: {
-            src: 'development/js/perfmatters.js',
-            dest: ['production/js/perfmatters.min.js', 'development/js/perfmatters.min.js']
+        development: {
+            files: {
+                /* Minify in development folder */
+                'development/js/perfmatters.min.js': 'development/js/perfmatters.js'
+            }
+        },
+        production: {
+            files: {
+                /* Minify in production folder */
+                'production/js/perfmatters.min.js': 'development/js/perfmatters.js'
+            }
         }
     }
     });
