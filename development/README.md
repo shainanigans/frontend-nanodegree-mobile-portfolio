@@ -4,13 +4,6 @@
 * Install [Node.js](https://nodejs.org/en/)
 * Install NPM by navigating to the project folder in your terminal and running `npm install`
 * Install Grunt by running `npm install -g grunt-cli`
-* Install the Grunt task dependencies by running:
-  * npm install grunt-cli grunt-contrib-watch grunt-autoprefixer
-  * npm install grunt-inline-css --save-dev
-  * npm install grunt-responsive-images --save-dev
-  * npm install grunt-contrib-clean --save-dev
-  * npm install grunt-mkdir --save-dev
-  * npm install grunt-contrib-uglify --save-dev
 
 ##To View
 View the project [online](http://shainanigans.github.io/frontend-nanodegree-mobile-portfolio/production) to use Page Speed Insights. Timeline and other Chrome Dev Tools can be used on the online project as well.
