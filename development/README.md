@@ -14,7 +14,7 @@
   * npm install grunt-contrib-uglify --save-dev
 
 ##To View
-View the project [online](http://shainanigans.github.io/production/frontend-nanodegree-mobile-portfolio/) to use Page Speed Insights. Timeline and other Chrome Dev Tools can be used on the online project as well.
+View the project [online](http://shainanigans.github.io/frontend-nanodegree-mobile-portfolio/production) to use Page Speed Insights. Timeline and other Chrome Dev Tools can be used on the online project as well.
 
 ##Optimisations
 ###Index.html
