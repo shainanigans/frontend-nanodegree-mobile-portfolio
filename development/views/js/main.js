@@ -538,8 +538,9 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log(windowHeight);
   var quantity = windowHeight / 100 * cols;
   console.log(quantity);
-  for (var i = 0; i < quantity; i++) { 
-    var elem = document.createElement('img');
+  var elem;
+  for (var i = 0; i < quantity; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
