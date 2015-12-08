@@ -46,7 +46,7 @@ View the project [online](http://shainanigans.github.io/frontend-nanodegree-mobi
   * Moved variables out of `for` loop
   * Used DocumentFragments instead of appending to the `div` within the loop
 * Optimised background pizza creation function
-  * Reduced number of background pizzas from 200 to 100
+  * Used screen size to determine number of background pizzas (reduced from a default 200)
   * Set `left` property for pizzas since `updatePositions()` no longer set it
 
 ##About
