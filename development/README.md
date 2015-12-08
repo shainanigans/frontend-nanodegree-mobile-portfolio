@@ -42,11 +42,12 @@ View the project [online](http://shainanigans.github.io/frontend-nanodegree-mobi
   * Cached variables outside of the `for` loops
   * Created reusable values for `phase` variable using an array
   * Used `transform` instead of `left` CSS property to move background pizzas
+* Optimised background pizza appending to page function
+  * Moved variables out of `for` loop
+  * Used DocumentFragments instead of appending to the `div` within the loop
 * Optimised background pizza creation function
   * Reduced number of background pizzas from 200 to 100
   * Set `left` property for pizzas since `updatePositions()` no longer set it
-  * Moved variables out of `for` loop
-  * Used DocumentFragments instead of appending to the `div` within the loop
 
 ##About
 This project is part of Udacity's Front-End Web Developer Nanodegree.
